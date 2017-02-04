@@ -1,5 +1,15 @@
 package deque;
 
+/**
+ * 
+ * 
+ * Assumptions/Restrictions: None.
+ * 
+ * Noteworthy Features: 
+ * 
+ * @author Ryan Amaral
+ *
+ */
 public class LinkedListDeque implements Deque {
 
     LinkedListDeque(){}

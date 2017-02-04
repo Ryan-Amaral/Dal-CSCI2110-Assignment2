@@ -1,5 +1,13 @@
 package deque;
 
+/**
+ * Assumptions/Restrictions: None.
+ * 
+ * Noteworthy Features: 
+ * 
+ * @author Ryan Amaral
+ *
+ */
 @SuppressWarnings("serial")
 public class EmptyStructureException extends Exception {
     
