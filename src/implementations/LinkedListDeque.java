@@ -1,7 +1,10 @@
-package deque;
+package implementations;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import adt.Deque;
+import exceptions.EmptyStructureException;
 
 /**
  * A linked list implementation of a deque.

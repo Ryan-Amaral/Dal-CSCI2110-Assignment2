@@ -1,4 +1,4 @@
-package deque;
+package exceptions;
 
 /**
  * Assumptions/Restrictions: None.

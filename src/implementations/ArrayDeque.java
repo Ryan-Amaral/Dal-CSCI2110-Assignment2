@@ -1,4 +1,8 @@
-package deque;
+package implementations;
+
+import adt.Deque;
+import exceptions.EmptyStructureException;
+import exceptions.FullStructureException;
 
 /**
  * An array implementation of a double ended queue.

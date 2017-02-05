@@ -1,4 +1,6 @@
-package deque;
+package adt;
+
+import exceptions.EmptyStructureException;
 
 /**
  * This is an interface for double ended queues. It uses generics so it
