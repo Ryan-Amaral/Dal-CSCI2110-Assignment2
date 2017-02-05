@@ -38,7 +38,7 @@ public class ArrayDeque<E> implements Deque {
 
     @Override
     public int size() {
-        return (elements.length - head + tail) % elements.length;
+        return (elements.length - head + tail) % maxSize;
     }
 
     @Override
@@ -51,8 +51,8 @@ public class ArrayDeque<E> implements Deque {
         if(size() == maxSize) throw new FullStructureException(); // error
         // slide all elements to right, then insert new element in head
         for(int i = size() - 1; i >= 0; i--){
-            elements[(head + i + 1) % size()] 
-                    = elements[(head + i) % size()];
+            elements[(head + i + 1) % maxSize] 
+                    = elements[(head + i) % maxSize];
         }
         elements[head] = element; // head location same, but element is new
         tail++; // increment tail
@@ -69,25 +69,36 @@ public class ArrayDeque<E> implements Deque {
     @Override
     public Object removeFirst() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
-        return null;
+        Object element = elements[head]; // ref element
+        elements[head] = null; // clear up space
+        head++; // move head one forward
+        head%=maxSize; // wrap
+        return element;
     }
 
     @Override
     public Object removeLast() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
-        return null;
+        Object element = elements[(tail - 1) % maxSize]; // ref element
+        elements[(tail - 1) % maxSize] = null; // clear up space
+        tail--; // move tail back and wrap
+        tail%=maxSize;
+        return element;
     }
 
     @Override
     public Object firstElement() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
-        return null;
+        return elements[head];
     }
 
     @Override
     public Object lastElement() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
-        return null;
+        return elements[tail-1];
     }
 
+    public String toString(){
+        return "";
+    }
 }

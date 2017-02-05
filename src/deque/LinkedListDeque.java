@@ -62,5 +62,7 @@ public class LinkedListDeque implements Deque {
         return null;
     }
     
-    
+    public String toString(){
+        return "";
+    }
 }
