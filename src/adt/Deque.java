@@ -12,7 +12,7 @@ import exceptions.EmptyStructureException;
  * 
  * @author Ryan Amaral
  *
- * @param <E> Use generic.
+ * @param <E> Use generics.
  */
 public interface Deque<E> {
 	

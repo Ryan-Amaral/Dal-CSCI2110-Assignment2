@@ -4,7 +4,7 @@ import adt.*;
 import exceptions.EmptyStructureException;
 
 /**
- * A generic stack built off of a deque.
+ * A generic Queue built off of a deque.
  * 
  * Assumptions/Restrictions: None.
  * 
@@ -12,17 +12,17 @@ import exceptions.EmptyStructureException;
  * 
  * @author Ryan Amaral
  *
- * @param <E>
+ * @param <E> Use generics.
  */
-public class DequeStack<E> implements Stack<E> {
+public class DequeQueue<E> implements Queue<E> {
     
-    Deque<E> deque; // the backing data structure of this stack
+    Deque<E> deque; // the backing data structure of this queue
     
     /**
-     * Creates a deque based stack of the desired deque type.
+     * Creates a deque based queue with the specified dequeue type.
      * @param deque The deque to build on.
      */
-    public DequeStack(Deque<E> deque){
+    public DequeQueue(Deque<E> deque){
         this.deque = deque;
     }
 
@@ -37,18 +37,18 @@ public class DequeStack<E> implements Stack<E> {
     }
 
     @Override
-    public E top() throws EmptyStructureException {
+    public E front() throws EmptyStructureException {
         return deque.lastElement();
     }
 
     @Override
-    public E pop() throws EmptyStructureException {
-        return deque.removeLast();
+    public void enqueue(E element) {
+        deque.insertFirst(element);
     }
 
     @Override
-    public void push(E element) {
-        deque.insertLast(element);
+    public E deque() throws EmptyStructureException {
+        return deque.removeLast();
     }
 
 }

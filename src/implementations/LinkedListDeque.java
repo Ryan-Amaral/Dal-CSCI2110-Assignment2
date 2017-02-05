@@ -7,24 +7,25 @@ import adt.Deque;
 import exceptions.EmptyStructureException;
 
 /**
- * A linked list implementation of a deque.
+ * A generic linked list implementation of a deque.
  * 
  * Assumptions/Restrictions: None.
  * 
  * Noteworthy Features: 
  * 
  * @author Ryan Amaral
- *
+ * 
+ * @param <E> Use generics.
  */
-public class LinkedListDeque<E> implements Deque {
+public class LinkedListDeque<E> implements Deque<E> {
     
-    LinkedList<Object> elements;
+    LinkedList<E> elements;
 
     /**
      * Creates a new linked list deque with an empty list
      */
     LinkedListDeque(){
-        elements = new LinkedList<Object>();
+        elements = new LinkedList<E>();
     }
 
     @Override
@@ -38,42 +39,42 @@ public class LinkedListDeque<E> implements Deque {
     }
 
     @Override
-    public void insertFirst(Object element) {
+    public void insertFirst(E element) {
         elements.add(0, element);
     }
 
     @Override
-    public void insertLast(Object element) {
+    public void insertLast(E element) {
         elements.add(elements.size(), element);
     }
 
     @Override
-    public Object removeFirst() throws EmptyStructureException {
+    public E removeFirst() throws EmptyStructureException {
         if(elements.isEmpty()) throw new EmptyStructureException();
         return elements.removeFirst();
     }
 
     @Override
-    public Object removeLast() throws EmptyStructureException {
+    public E removeLast() throws EmptyStructureException {
         if(elements.isEmpty()) throw new EmptyStructureException();
         return elements.removeLast();
     }
 
     @Override
-    public Object firstElement() throws EmptyStructureException {
+    public E firstElement() throws EmptyStructureException {
         if(elements.isEmpty()) throw new EmptyStructureException();
         return elements.getFirst();
     }
 
     @Override
-    public Object lastElement() throws EmptyStructureException {
+    public E lastElement() throws EmptyStructureException {
         if(elements.isEmpty()) throw new EmptyStructureException();
         return elements.getLast();
     }
     
     public String toString(){
         String str = "{"; // the string to return
-        Iterator<Object> iterator = elements.iterator();
+        Iterator<E> iterator = elements.iterator();
         while(iterator.hasNext()){
             str += iterator.next().toString();
             if(iterator.hasNext())

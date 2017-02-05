@@ -12,12 +12,12 @@ import exceptions.FullStructureException;
  * Noteworthy Features: 
  * 
  * @author Ryan Amaral
- * @param <E>
+ * @param <E> Use generics.
  *
  */
-public class ArrayDeque<E> implements Deque {
+public class ArrayDeque<E> implements Deque<E> {
     
-    private Object[] elements; // where the data is stored
+    private E[] elements; // where the data is stored
     private final int DefaultSize = 10; // starting size of queue array
     private int maxSize; // the actual size of the queue
     private int head = 0; // the index of the first element
@@ -51,7 +51,7 @@ public class ArrayDeque<E> implements Deque {
     }
 
     @Override
-    public void insertFirst(Object element) throws FullStructureException {
+    public void insertFirst(E element) throws FullStructureException {
         if(size() == maxSize) throw new FullStructureException(); // error
         // slide all elements to right, then insert new element in head
         for(int i = size() - 1; i >= 0; i--){
@@ -64,16 +64,16 @@ public class ArrayDeque<E> implements Deque {
     }
 
     @Override
-    public void insertLast(Object element) throws FullStructureException {
+    public void insertLast(E element) throws FullStructureException {
         if(size() == maxSize) throw new FullStructureException(); // error
         elements[tail] = element;
         tail++;
     }
 
     @Override
-    public Object removeFirst() throws EmptyStructureException {
+    public E removeFirst() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
-        Object element = elements[head]; // ref element
+        E element = elements[head]; // ref element
         elements[head] = null; // clear up space
         head++; // move head one forward
         head%=maxSize; // wrap
@@ -81,9 +81,9 @@ public class ArrayDeque<E> implements Deque {
     }
 
     @Override
-    public Object removeLast() throws EmptyStructureException {
+    public E removeLast() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
-        Object element = elements[(tail - 1) % maxSize]; // ref element
+        E element = elements[(tail - 1) % maxSize]; // ref element
         elements[(tail - 1) % maxSize] = null; // clear up space
         tail--; // move tail back and wrap
         tail%=maxSize;
@@ -91,13 +91,13 @@ public class ArrayDeque<E> implements Deque {
     }
 
     @Override
-    public Object firstElement() throws EmptyStructureException {
+    public E firstElement() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
         return elements[head];
     }
 
     @Override
-    public Object lastElement() throws EmptyStructureException {
+    public E lastElement() throws EmptyStructureException {
         if(isEmpty()) throw new EmptyStructureException();
         return elements[tail-1];
     }

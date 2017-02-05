@@ -1,6 +1,9 @@
 package exceptions;
 
 /**
+ * An exception for when a data structure is full. Mainly for array 
+ * based implementations.
+ * 
  * Assumptions/Restrictions: None.
  * 
  * Noteworthy Features: 

@@ -1,6 +1,8 @@
 package exceptions;
 
 /**
+ * An exception for when a data structure is empty.
+ * 
  * Assumptions/Restrictions: None.
  * 
  * Noteworthy Features: 
