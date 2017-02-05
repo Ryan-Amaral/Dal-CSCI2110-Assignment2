@@ -51,4 +51,7 @@ public class DequeQueue<E> implements Queue<E> {
         return deque.removeLast();
     }
 
+    public String toString(){
+        return deque.toString();
+    }
 }

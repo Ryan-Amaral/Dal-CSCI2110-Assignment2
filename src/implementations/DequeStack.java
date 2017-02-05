@@ -51,4 +51,7 @@ public class DequeStack<E> implements Stack<E> {
         deque.insertLast(element);
     }
 
+    public String toString(){
+        return deque.toString();
+    }
 }

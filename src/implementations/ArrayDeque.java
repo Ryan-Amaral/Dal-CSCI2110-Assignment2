@@ -22,6 +22,7 @@ public class ArrayDeque<E> implements Deque<E> {
     private int maxSize; // the actual size of the queue
     private int head = 0; // the index of the first element
     private int tail = 0; // one past the index of the last element
+    private boolean isFull; // stores whether the dequeu is full
     
     /**
      * Creates an array based double ended queue of size DefaultSize.
@@ -29,6 +30,7 @@ public class ArrayDeque<E> implements Deque<E> {
     public ArrayDeque(){
         elements = (E[])new Object[DefaultSize];
         maxSize = DefaultSize;
+        isFull = false;
     }
     
     /**
@@ -38,21 +40,27 @@ public class ArrayDeque<E> implements Deque<E> {
     public ArrayDeque(int size){
         elements = (E[])new Object[size];
         maxSize = size;
+        isFull = false;
     }
 
     @Override
     public int size() {
-        return (elements.length - head + tail) % maxSize;
+        // seperate case for isFull because formula will give length of 0
+        // if full
+        if(isFull)
+            return maxSize;
+        else
+            return (elements.length - head + tail) % maxSize;
     }
 
     @Override
     public boolean isEmpty() {
-        return head == tail;
+        return head == tail && isFull == false;
     }
 
     @Override
     public void insertFirst(E element) throws FullStructureException {
-        if(size() == maxSize) throw new FullStructureException(); // error
+        if(isFull == true) throw new FullStructureException(); // error
         // slide all elements to right, then insert new element in head
         for(int i = size() - 1; i >= 0; i--){
             elements[(head + i + 1) % maxSize] 
@@ -61,13 +69,15 @@ public class ArrayDeque<E> implements Deque<E> {
         elements[head] = element; // head location same, but element is new
         tail++; // increment tail
         tail%=maxSize; // wrap if needed
+        isFull = (head == tail); // full if head = tail on insert
     }
 
     @Override
     public void insertLast(E element) throws FullStructureException {
-        if(size() == maxSize) throw new FullStructureException(); // error
+        if(isFull == true) throw new FullStructureException(); // error
         elements[tail] = element;
         tail++;
+        isFull = (head == tail); // full if head = tail on insert
     }
 
     @Override
@@ -77,6 +87,7 @@ public class ArrayDeque<E> implements Deque<E> {
         elements[head] = null; // clear up space
         head++; // move head one forward
         head%=maxSize; // wrap
+        isFull = false; // isFull never true if remove
         return element;
     }
 
@@ -87,6 +98,7 @@ public class ArrayDeque<E> implements Deque<E> {
         elements[(tail - 1) % maxSize] = null; // clear up space
         tail--; // move tail back and wrap
         tail%=maxSize;
+        isFull = false; // isFull never true if remove
         return element;
     }
 

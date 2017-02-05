@@ -24,7 +24,7 @@ public class LinkedListDeque<E> implements Deque<E> {
     /**
      * Creates a new linked list deque with an empty list
      */
-    LinkedListDeque(){
+    public LinkedListDeque(){
         elements = new LinkedList<E>();
     }
 
