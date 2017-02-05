@@ -99,6 +99,13 @@ public class ArrayDeque<E> implements Deque {
     }
 
     public String toString(){
-        return "";
+        String str = "{"; // the string to return
+        for(int i = 0; i < size(); i++){
+            str += elements[(head + i) % maxSize].toString();
+            if(i < size() - 1)
+                str += ",";
+        }
+        str += "}";
+        return str;
     }
 }

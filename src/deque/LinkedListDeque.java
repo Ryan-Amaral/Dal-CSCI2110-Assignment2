@@ -1,7 +1,10 @@
 package deque;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
 /**
- * 
+ * A linked list implementation of a deque.
  * 
  * Assumptions/Restrictions: None.
  * 
@@ -10,59 +13,70 @@ package deque;
  * @author Ryan Amaral
  *
  */
-public class LinkedListDeque implements Deque {
+public class LinkedListDeque<E> implements Deque {
+    
+    LinkedList<Object> elements;
 
-    LinkedListDeque(){}
+    /**
+     * Creates a new linked list deque with an empty list
+     */
+    LinkedListDeque(){
+        elements = new LinkedList<Object>();
+    }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return elements.size();
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return elements.isEmpty();
     }
 
     @Override
     public void insertFirst(Object element) {
-        // TODO Auto-generated method stub
-        
+        elements.add(0, element);
     }
 
     @Override
     public void insertLast(Object element) {
-        // TODO Auto-generated method stub
-        
+        elements.add(elements.size(), element);
     }
 
     @Override
     public Object removeFirst() throws EmptyStructureException {
-        // TODO Auto-generated method stub
-        return null;
+        if(elements.isEmpty()) throw new EmptyStructureException();
+        return elements.removeFirst();
     }
 
     @Override
     public Object removeLast() throws EmptyStructureException {
-        // TODO Auto-generated method stub
-        return null;
+        if(elements.isEmpty()) throw new EmptyStructureException();
+        return elements.removeLast();
     }
 
     @Override
     public Object firstElement() throws EmptyStructureException {
-        // TODO Auto-generated method stub
-        return null;
+        if(elements.isEmpty()) throw new EmptyStructureException();
+        return elements.getFirst();
     }
 
     @Override
     public Object lastElement() throws EmptyStructureException {
-        // TODO Auto-generated method stub
-        return null;
+        if(elements.isEmpty()) throw new EmptyStructureException();
+        return elements.getLast();
     }
     
     public String toString(){
-        return "";
+        String str = "{"; // the string to return
+        Iterator<Object> iterator = elements.iterator();
+        while(iterator.hasNext()){
+            str += iterator.next().toString();
+            if(iterator.hasNext())
+                str += ",";
+        }
+        str += "}";
+        return str;
     }
 }
