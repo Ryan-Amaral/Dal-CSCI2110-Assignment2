@@ -40,5 +40,5 @@ public interface Queue<E> {
      * Removes and returns the object at the front of the queue.
      * @return The object at the front of the queue.
      */
-    public E deque() throws EmptyStructureException;
+    public E dequeue() throws EmptyStructureException;
 }

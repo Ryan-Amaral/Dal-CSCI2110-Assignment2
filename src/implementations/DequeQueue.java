@@ -47,7 +47,7 @@ public class DequeQueue<E> implements Queue<E> {
     }
 
     @Override
-    public E deque() throws EmptyStructureException {
+    public E dequeue() throws EmptyStructureException {
         return deque.removeLast();
     }
 
