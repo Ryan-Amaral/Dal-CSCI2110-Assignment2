@@ -1,6 +1,6 @@
 # Dal-CSCI2110-Assignment2
 
-<h2>Assignment 1 for CSCI 2110 (Computer Science 3 / Data Structures).</h2>
+<h2>Assignment 2 for CSCI 2110 (Computer Science 3 / Data Structures).</h2>
 
 <p>This is a program to create and test abstract data structures, all to do with double ended queues (deques). There is an array and a linked list implementation of deques. There are also stacks and queues that implement the linked list deques.</p>
 
@@ -102,4 +102,23 @@ push(4): {9,8,7,6,5,4}
 push(3): {9,8,7,6,5,4,3}
 push(2): {9,8,7,6,5,4,3,2}
 push(1): {9,8,7,6,5,4,3,2,1}
-push(0): {9,8,7,6,5,4,3,2,1,0}</pre>
+push(0): {9,8,7,6,5,4,3,2,1,0}
+
+FOR MAX_STACK:
+{} Max: -
+push(55): {55} Max: 55
+push(23): {55,23} Max: 55
+push(76): {55,23,76} Max: 76
+pop(): {55,23} Max: 55
+push(76): {55,23,76} Max: 76
+push(76): {55,23,76,76} Max: 76
+pop(): {55,23,76} Max: 76
+pop(): {55,23} Max: 55
+pop(): {55} Max: 55
+pop(): {} Max: -
+pop(): error
+pop(): {} Max: -
+pop(): error
+pop(): {} Max: -
+push(-99): {-99} Max: -99
+push(0): {-99,0} Max: 0</pre>

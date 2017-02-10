@@ -29,6 +29,8 @@ public class TestClass {
         testDequeQueue();
         System.out.println();
         testDequeStack();
+        System.out.println();
+        testMaxStack();
     }
     
     private static void testArrayDeque(){
@@ -375,6 +377,70 @@ public class TestClass {
         System.out.println("push(2): " + stack.toString());
         stack.push(1);
         System.out.println("push(1): " + stack.toString());
+        stack.push(0);
+        System.out.println("push(0): " + stack.toString());
+    }
+
+    private static void testMaxStack(){
+        System.out.println("FOR MAX_STACK:");
+        
+        DequeMaxStack stack = new DequeMaxStack(new LinkedListDeque<>());
+        
+        System.out.println(stack.toString());
+        stack.push(55);
+        System.out.println("push(55): " + stack.toString());
+        stack.push(23);
+        System.out.println("push(23): " + stack.toString());
+        stack.push(76);
+        System.out.println("push(76): " + stack.toString());
+        try {
+            stack.pop();
+        } catch (EmptyStructureException e) {
+            System.out.println("pop(): error");
+        }
+        System.out.println("pop(): " + stack.toString());
+        stack.push(76);
+        System.out.println("push(76): " + stack.toString());
+        stack.push(76);
+        System.out.println("push(76): " + stack.toString());
+        try {
+            stack.pop();
+        } catch (EmptyStructureException e) {
+            System.out.println("pop(): error");
+        }
+        System.out.println("pop(): " + stack.toString());
+        try {
+            stack.pop();
+        } catch (EmptyStructureException e) {
+            System.out.println("pop(): error");
+        }
+        System.out.println("pop(): " + stack.toString());
+        try {
+            stack.pop();
+        } catch (EmptyStructureException e) {
+            System.out.println("pop(): error");
+        }
+        System.out.println("pop(): " + stack.toString());
+        try {
+            stack.pop();
+        } catch (EmptyStructureException e) {
+            System.out.println("pop(): error");
+        }
+        System.out.println("pop(): " + stack.toString());
+        try {
+            stack.pop();
+        } catch (EmptyStructureException e) {
+            System.out.println("pop(): error");
+        }
+        System.out.println("pop(): " + stack.toString());
+        try {
+            stack.pop();
+        } catch (EmptyStructureException e) {
+            System.out.println("pop(): error");
+        }
+        System.out.println("pop(): " + stack.toString());
+        stack.push(-99);
+        System.out.println("push(-99): " + stack.toString());
         stack.push(0);
         System.out.println("push(0): " + stack.toString());
     }
